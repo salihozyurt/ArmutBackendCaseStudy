@@ -3,7 +3,7 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerOptions = {
     definition: {
         info: {
-            title: 'Learn API',
+            title: 'Armut Case API',
             version: '1.0.0'
         }
     },
@@ -11,5 +11,4 @@ const swaggerOptions = {
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
-
 module.exports = swaggerDocs
