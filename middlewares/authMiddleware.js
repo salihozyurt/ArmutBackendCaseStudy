@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
         jwt.verify(token, 'ArmutCase', (err, decodedToken) =>{
             if (err) {
                 res.status(409).json({
-                    'Status': '409',
+                    'Status': '401',
                     'Status Message': 'User not verified'
                 })
                 errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${err}  - ${req.originalUrl} - ${req.ip}`)
@@ -24,7 +24,7 @@ const requireAuth = (req, res, next) => {
         })
     } else {
         res.status(409).json({
-            'Status': '409',
+            'Status': '401',
             'Status Message': 'Token not found'
         })
         errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - Token not found  - ${req.originalUrl} - ${req.ip}`)
@@ -39,7 +39,7 @@ const checkUser = (req, res, next) => {
             if (err) {
                 res.locals.user = null
                 res.status(409).json({
-                    'Status': '409',
+                    'Status': '401',
                     'Status Message': 'User not verified'
                 })
                 errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${err}  - ${req.originalUrl} - ${req.ip}`)
@@ -52,7 +52,7 @@ const checkUser = (req, res, next) => {
         })
     } else {
         res.status(409).json({
-            'Status': '409',
+            'Status': '401',
             'Status Message': 'Token not found'
         })
         errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - Token not found  - ${req.originalUrl} - ${req.ip}`)

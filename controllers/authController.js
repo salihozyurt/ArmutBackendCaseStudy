@@ -30,16 +30,16 @@ const signup_post = (req, res) => {
 
     user.save()
         .then((result) => {
-            res.status(200).json({
-                'Status': '200',
-                'Status Message': 'Signup With Success'
+            res.status(201).json({
+                'Status': '201',
+                'Status Message': 'Account is created'
             })
             infoLogger.info(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - 'Success' - ${req.originalUrl} - ${req.ip}`)
         })
         .catch((err) => {
             res.status(409).json({
-                'Status': '409',
-                'Status Message': 'Failed Register'
+                'Status': '401',
+                'Status Message': 'Unauthorized'
             })
             errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${err}  - ${req.originalUrl} - ${req.ip}`)
         })
