@@ -6,6 +6,7 @@ const swaggerUi = require('swagger-ui-express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const authRoutes = require('./routes/authRoutes')
+const optionRoutes = require('./routes/optionRoutes')
 const { requireAuth, checkUser } = require('./middlewares/authMiddleware')
 
 const app = express()
@@ -26,6 +27,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.get('*', checkUser)
 app.use('/', authRoutes)
+app.use('/option', requireAuth, optionRoutes)
 //app.use('/single', requireAuth, singleRoutes)
 
 app.use((err, req, res, next) => {

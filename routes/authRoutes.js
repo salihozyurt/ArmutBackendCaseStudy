@@ -10,8 +10,6 @@ const authController = require('../controllers/authController')
  *       - application/json
  *     parameters:
  *       - in: body
- *         name: user
- *         description: The user to create.
  *         schema:
  *           type: object
  *           required:
@@ -39,8 +37,6 @@ router.post('/login', authController.login_post)
  *       - application/json
  *     parameters:
  *       - in: body
- *         name: user
- *         description: The user to create.
  *         schema:
  *           type: object
  *           required:
