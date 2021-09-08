@@ -11,4 +11,6 @@ docker-compose up
 npm test
 ```
 ### Reach detailed documentation file created via Swagger after run the project
-[a link](http://localhost:3000/api-docs)
+```
+[http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+```
