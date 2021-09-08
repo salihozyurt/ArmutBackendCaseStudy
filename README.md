@@ -12,6 +12,3 @@ npm test
 ```
 ### Reach detailed documentation file created via Swagger after run the project
 <a href="http://localhost:3000/api-docs">http://localhost:3000/api-docs</a>
-```
-<a href="http://localhost:3000/api-docs">http://localhost:3000/api-docs</a>
-```
