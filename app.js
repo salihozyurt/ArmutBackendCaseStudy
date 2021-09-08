@@ -12,8 +12,7 @@ const { requireAuth, checkUser } = require('./middlewares/authMiddleware')
 
 const app = express()
 
-//'mongodb://mongo:27017/ArmutCase?retryWrites=true&w=majority'
-const dbURL = 'mongodb+srv://adminsalih:passsalih@armutcase.wdhmz.mongodb.net/ArmutCase?retryWrites=true&w=majority'
+const dbURL = 'mongodb://mongo:27017/ArmutCase?retryWrites=true&w=majority'
 
 if (process.env.NODE_ENV === 'test') {
     const Mockgoose = require('mockgoose').Mockgoose

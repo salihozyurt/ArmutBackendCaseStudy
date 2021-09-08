@@ -45,8 +45,7 @@ const signup_post = (req, res) => {
             .then((result) => {
                 res.status(201).json({
                     'Status': '201',
-                    'Status Message': 'Account is created',
-                    'user': req.body
+                    'Status Message': 'Account is created'
                 })
                 infoLogger.info(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - 'Success' - ${req.originalUrl} - ${req.ip}`)
             })
