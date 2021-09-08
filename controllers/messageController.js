@@ -33,7 +33,10 @@ const sendMessage = async (req, res) => {
             errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${error}  - ${req.originalUrl} - ${req.ip}`)
         }
     } catch (error) {
-        res.status(404)
+        res.status(404).json({
+            'Status': '404',
+            'Status Message': 'Not Found'
+        })
         errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${error}  - ${req.originalUrl} - ${req.ip}`)
     }
 }
@@ -59,7 +62,10 @@ const getMessages = async (req, res) => {
         })
         infoLogger.info(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - 'Success' - ${req.originalUrl} - ${req.ip}`)
     } catch (error) {
-        res.status(404)
+        res.status(404).json({
+            'Status': '404',
+            'Status Message': 'Not Found'
+        })
         errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${error}  - ${req.originalUrl} - ${req.ip}`)
     }
 }

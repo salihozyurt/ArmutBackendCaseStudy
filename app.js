@@ -15,11 +15,26 @@ const app = express()
 //'mongodb://mongo:27017/ArmutCase?retryWrites=true&w=majority'
 const dbURL = 'mongodb+srv://adminsalih:passsalih@armutcase.wdhmz.mongodb.net/ArmutCase?retryWrites=true&w=majority'
 
-mongoose.connect(dbURL, { useNewUrlParser: true , useUnifiedTopology: true })
-    .then((result) => app.listen(3000))
-    .catch((err) => {
-        throw new Error('Not Connect to DB Successfully - ' + err)
-    })
+if (process.env.NODE_ENV === 'test') {
+    const Mockgoose = require('mockgoose').Mockgoose
+    const mockgoose = new  Mockgoose(mongoose)
+
+    mockgoose.prepareStorage()
+        .then(() => {
+            mongoose.connect(dbURL, { useNewUrlParser: true , useUnifiedTopology: true })
+                .then((result) => app.listen(3000))
+                .catch((err) => {
+                    throw new Error('Not Connect to DB Successfully - ' + err)
+                })
+        })
+} else {
+    mongoose.connect(dbURL, { useNewUrlParser: true , useUnifiedTopology: true })
+        .then((result) => app.listen(3000))
+        .catch((err) => {
+            throw new Error('Not Connect to DB Successfully - ' + err)
+        })
+}
+
 
 app.use(express.json())
 app.use(cookieParser())
@@ -36,3 +51,5 @@ app.use((err, req, res, next) => {
     errorLogger.error(`${new Date().constructor().split(' GMT')[0]} - ${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`)
     next(err)
 })
+
+module.exports = app
