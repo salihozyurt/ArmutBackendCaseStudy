@@ -1,7 +1,6 @@
-# ArmutBackendCaseStudy
-Armut - Backend Developer - Case Study - Messaging Service
+# Messaging Service
 
-### Run the project with docker
+### Basic Messaging Service API with express library
 ```
 docker-compose up
 ```
